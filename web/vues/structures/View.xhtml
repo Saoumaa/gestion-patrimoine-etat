@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStructuresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStructuresLabel_structuresId}"/>
+                    <h:outputText value="#{structuresController.selected.structuresId}" title="#{bundle.ViewStructuresTitle_structuresId}"/>
+                    <h:outputText value="#{bundle.ViewStructuresLabel_abreviation}"/>
+                    <h:outputText value="#{structuresController.selected.abreviation}" title="#{bundle.ViewStructuresTitle_abreviation}"/>
+                    <h:outputText value="#{bundle.ViewStructuresLabel_designation}"/>
+                    <h:outputText value="#{structuresController.selected.designation}" title="#{bundle.ViewStructuresTitle_designation}"/>
+                    <h:outputText value="#{bundle.ViewStructuresLabel_rangStructureId}"/>
+                    <h:outputText value="#{structuresController.selected.rangStructureId}" title="#{bundle.ViewStructuresTitle_rangStructureId}"/>
+                    <h:outputText value="#{bundle.ViewStructuresLabel_typeStructureId}"/>
+                    <h:outputText value="#{structuresController.selected.typeStructureId}" title="#{bundle.ViewStructuresTitle_typeStructureId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{structuresController.destroyAndView}" value="#{bundle.ViewStructuresDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewStructuresEditLink}"/>
+                <br />
+                <h:commandLink action="#{structuresController.prepareCreate}" value="#{bundle.ViewStructuresCreateLink}" />
+                <br />
+                <h:commandLink action="#{structuresController.prepareList}" value="#{bundle.ViewStructuresShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewStructuresIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

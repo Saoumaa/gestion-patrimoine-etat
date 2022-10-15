@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLocalisationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+             <section class="content">
+                <div class="container-fluid">
+                    <div class="block-header">
+                        <h2>DASHBOARD</h2>
+                    </div>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+            <h:form>
+                <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <!--
+                    <h:outputLabel value="{bundle.EditLocalisationLabel_localisationId}" for="localisationId" />
+                    <h:inputText id="localisationId" value="{localisationController.selected.localisationId}" title="{bundle.EditLocalisationTitle_localisationId}" required="true" requiredMessage="{bundle.EditLocalisationRequiredMessage_localisationId}"/> -->
+                    <h:outputLabel value="#{bundle.EditLocalisationLabel_designation}" for="designation" />
+                    <h:inputText id="designation" value="#{localisationController.selected.designation}" title="#{bundle.EditLocalisationTitle_designation}" />
+                    </div>
+                                            </div>
+                
+                <div class="row clearfix">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                    <h:outputLabel value="#{bundle.EditLocalisationLabel_localisationMereId}" for="localisationMereId" />
+                    <h:selectOneMenu id="localisationMereId" value="#{localisationController.selected.localisationMereId}" title="#{bundle.EditLocalisationTitle_localisationMereId}" >
+                        <f:selectItems value="#{localisationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                      </div>
+                                                </div>
+                                            </div>
+                    
+                     <div class="col-sm-6">
+                                                <div class="form-group ">
+                                                    <div class="form-line">
+                    <h:outputLabel value="#{bundle.EditLocalisationLabel_typeLocalisationId}" for="typeLocalisationId" />
+                    <h:selectOneMenu id="typeLocalisationId" value="#{localisationController.selected.typeLocalisationId}" title="#{bundle.EditLocalisationTitle_typeLocalisationId}" >
+                        <f:selectItems value="#{typeLocalisationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <h:commandLink action="#{localisationController.update}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditLocalisationSaveLink}"/>&nbsp;
+                
+                                                        <h:link outcome="View" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditLocalisationViewLink}"/>&nbsp;
+            
+                                                        <h:commandLink action="#{localisationController.prepareList}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditLocalisationShowAllLink}" immediate="true"/>&nbsp;
+               
+                <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditLocalisationIndexLink}" />
+                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            </h:form>
+                                     </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>

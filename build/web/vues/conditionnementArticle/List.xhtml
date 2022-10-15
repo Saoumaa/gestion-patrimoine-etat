@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConditionnementArticleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+             <section class="content">
+                <div class="container-fluid">
+                    
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+                                    <h:form styleClass="jsfcrud_list_form">
+                                        <div class="block-header">
+                                            <h2> <h:outputText value="#{bundle.ListConditionnementArticleTitle}"></h:outputText></h2>
+                                        </div>
+                                        <h:panelGroup id="messagePanel" layout="block">
+                                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                        </h:panelGroup>
+                                        <h:outputText escape="false" value="#{bundle.ListConditionnementArticleEmpty}" rendered="#{conditionnementArticleController.items.rowCount == 0}"/>
+                                        <h:panelGroup rendered="#{conditionnementArticleController.items.rowCount > 0}">
+                                            <h:outputText value="#{conditionnementArticleController.pagination.pageFirstItem + 1}..#{conditionnementArticleController.pagination.pageLastItem + 1}/#{conditionnementArticleController.pagination.itemsCount}"/>&nbsp;
+                                            <h:commandLink action="#{conditionnementArticleController.previous}" value="#{bundle.Previous} #{conditionnementArticleController.pagination.pageSize}" rendered="#{conditionnementArticleController.pagination.hasPreviousPage}"/>&nbsp;
+                                            <h:commandLink action="#{conditionnementArticleController.next}" value="#{bundle.Next} #{conditionnementArticleController.pagination.pageSize}" rendered="#{conditionnementArticleController.pagination.hasNextPage}"/>&nbsp;
+                                            <h:dataTable class="table table-bordered" value="#{conditionnementArticleController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                                <h:column rendered="false">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListConditionnementArticleTitle_conditionnementArticleId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.conditionnementArticleId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListConditionnementArticleTitle_designation}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.designation}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListConditionnementArticleTitle_ressourcesId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.ressourcesId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListConditionnementArticleTitle_uniteId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.uniteId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="&nbsp;"/>
+                                                    </f:facet>
+                                                    <h:commandLink class="btn btn-primary m-t-15 waves-effect" action="#{conditionnementArticleController.prepareView}" value="#{bundle.ListConditionnementArticleViewLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink class="btn btn-warning m-t-15 waves-effect" action="#{conditionnementArticleController.prepareEdit}" value="#{bundle.ListConditionnementArticleEditLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink class="btn btn-danger m-t-15 waves-effect" action="#{conditionnementArticleController.destroy}" value="#{bundle.ListConditionnementArticleDestroyLink}"/>
+                                                </h:column>
+                                            </h:dataTable>
+                                        </h:panelGroup>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <h:commandLink action="#{conditionnementArticleController.prepareCreate}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListConditionnementArticleCreateLink}"/>&nbsp;
+
+                                                        <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListConditionnementArticleIndexLink}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </section>
+            
+            
+            
+            
+            
+            
+            <h:form styleClass="jsfcrud_list_form">
+                
+                
+                
+                
+                <h:commandLink action="#{conditionnementArticleController.prepareCreate}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListConditionnementArticleCreateLink}"/>&nbsp;
+                
+                <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListConditionnementArticleIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

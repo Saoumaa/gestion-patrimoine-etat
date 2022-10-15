@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateConditionnementArticleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="block-header">
+
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="header">
+                                    
+                                </div>
+                                <div class="body">
+                                    <h:form>
+                                        <h2>
+                                           <h:outputText value="#{bundle.CreateConditionnementArticleTitle}"></h:outputText>
+                                       </h2>
+                                            <!--
+                                             <div class="form-group">
+                                             <h:outputLabel value="{bundle.CreateFamilleLabel_familleId}" for="familleId" />
+                                             <h:inputText id="familleId" class="form-control" value="{familleController.selected.familleId}" title="{bundle.CreateFamilleTitle_familleId}" required="false" requiredMessage="{bundle.CreateFamilleRequiredMessage_familleId}"/>
+                                             </div>-->
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <h:outputLabel value="#{bundle.CreateConditionnementArticleLabel_conditionnementArticleId}" class="form-label" for="conditionnementArticleId" />
+                                                    <h:inputText id="conditionnementArticleId" class="form-control" value="#{conditionnementArticleController.selected.conditionnementArticleId}" title="#{bundle.CreateConditionnementArticleTitle_conditionnementArticleId}" required="true" requiredMessage="#{bundle.CreateConditionnementArticleRequiredMessage_conditionnementArticleId}"/>   
+                                                </div>
+                                                <div class="form-line m-t-25">
+                                                    <h:outputLabel value="#{bundle.CreateConditionnementArticleLabel_designation}" class="form-label" for="designation" />
+                                                    <h:inputText id="designation" value="#{conditionnementArticleController.selected.designation}" class="form-control" title="#{bundle.CreateConditionnementArticleTitle_designation}" />
+                                                </div>
+                                                <div class="form-line m-t-25">
+                                                    <h:outputLabel value="#{bundle.CreateConditionnementArticleLabel_ressourcesId}" for="ressourcesId" />
+                                                    <h:selectOneMenu id="ressourcesId" value="#{conditionnementArticleController.selected.ressourcesId}" class="" title="#{bundle.CreateConditionnementArticleTitle_ressourcesId}" >
+                                                        <f:selectItems value="#{ressourcesController.itemsAvailableSelectOne}"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                                <div class="form-line m-t-25">
+                                                    <h:outputLabel value="#{bundle.CreateConditionnementArticleLabel_uniteId}" for="uniteId" />
+                                                    <h:selectOneMenu id="uniteId" value="#{conditionnementArticleController.selected.uniteId}" title="#{bundle.CreateConditionnementArticleTitle_uniteId}" >
+                                                        <f:selectItems value="#{uniteController.itemsAvailableSelectOne}"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <h:commandLink action="#{conditionnementArticleController.create}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.CreateConditionnementArticleSaveLink}" />&nbsp;
+
+                                                            <h:commandLink action="#{conditionnementArticleController.prepareList}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.CreateConditionnementArticleShowAllLink}" immediate="true"/>&nbsp;
+
+                                                            <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.CreateConditionnementArticleIndexLink}"/>&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>

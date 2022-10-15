@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMouvementStockTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMouvementStockEmpty}" rendered="#{mouvementStockController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{mouvementStockController.items.rowCount > 0}">
+                    <h:outputText value="#{mouvementStockController.pagination.pageFirstItem + 1}..#{mouvementStockController.pagination.pageLastItem + 1}/#{mouvementStockController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{mouvementStockController.previous}" value="#{bundle.Previous} #{mouvementStockController.pagination.pageSize}" rendered="#{mouvementStockController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{mouvementStockController.next}" value="#{bundle.Next} #{mouvementStockController.pagination.pageSize}" rendered="#{mouvementStockController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{mouvementStockController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMouvementStockTitle_mouvementStockId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mouvementStockId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMouvementStockTitle_quantiteMvt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantiteMvt}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMouvementStockTitle_typeMouvement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeMouvement}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMouvementStockTitle_localId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{mouvementStockController.prepareView}" value="#{bundle.ListMouvementStockViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mouvementStockController.prepareEdit}" value="#{bundle.ListMouvementStockEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mouvementStockController.destroy}" value="#{bundle.ListMouvementStockDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{mouvementStockController.prepareCreate}" value="#{bundle.ListMouvementStockCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMouvementStockIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

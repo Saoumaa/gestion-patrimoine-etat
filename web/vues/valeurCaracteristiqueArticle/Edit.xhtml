@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditValeurCaracteristiqueArticleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditValeurCaracteristiqueArticleLabel_valeur}" for="valeur" />
+                    <h:inputText id="valeur" value="#{valeurCaracteristiqueArticleController.selected.valeur}" title="#{bundle.EditValeurCaracteristiqueArticleTitle_valeur}" />
+                    <h:outputLabel value="#{bundle.EditValeurCaracteristiqueArticleLabel_valeurCarateristiqueArtId}" for="valeurCarateristiqueArtId" />
+                    <h:inputText id="valeurCarateristiqueArtId" value="#{valeurCaracteristiqueArticleController.selected.valeurCarateristiqueArtId}" title="#{bundle.EditValeurCaracteristiqueArticleTitle_valeurCarateristiqueArtId}" required="true" requiredMessage="#{bundle.EditValeurCaracteristiqueArticleRequiredMessage_valeurCarateristiqueArtId}"/>
+                    <h:outputLabel value="#{bundle.EditValeurCaracteristiqueArticleLabel_caracteristiquesId}" for="caracteristiquesId" />
+                    <h:selectOneMenu id="caracteristiquesId" value="#{valeurCaracteristiqueArticleController.selected.caracteristiquesId}" title="#{bundle.EditValeurCaracteristiqueArticleTitle_caracteristiquesId}" >
+                        <f:selectItems value="#{caracteristiquesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditValeurCaracteristiqueArticleLabel_ressourcesId}" for="ressourcesId" />
+                    <h:selectOneMenu id="ressourcesId" value="#{valeurCaracteristiqueArticleController.selected.ressourcesId}" title="#{bundle.EditValeurCaracteristiqueArticleTitle_ressourcesId}" >
+                        <f:selectItems value="#{ressourcesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{valeurCaracteristiqueArticleController.update}" value="#{bundle.EditValeurCaracteristiqueArticleSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditValeurCaracteristiqueArticleViewLink}"/>
+                <br />
+                <h:commandLink action="#{valeurCaracteristiqueArticleController.prepareList}" value="#{bundle.EditValeurCaracteristiqueArticleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditValeurCaracteristiqueArticleIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

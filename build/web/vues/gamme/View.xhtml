@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewGammeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="block-header">
+                        <h2>DASHBOARD</h2>
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+
+                                    <h:form>
+                                        <div class="form-group form-float">
+                                            <!--
+                                                <h:outputText value="{bundle.ViewGammeLabel_gammeId}"/>
+                                                <h:outputText value="{gammeController.selected.gammeId}" title="{bundle.ViewGammeTitle_gammeId}"/>-->
+                                            <h:outputText value="#{bundle.ViewGammeLabel_designation}"/>
+                                            <h:outputText value="#{gammeController.selected.designation}" title="#{bundle.ViewGammeTitle_designation}"/>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <h:commandLink action="#{gammeController.destroyAndView}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewGammeDestroyLink}"/>&nbsp;
+                                                        <h:link outcome="Edit" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewGammeEditLink}"/>&nbsp;
+
+                                                        <h:commandLink action="#{gammeController.prepareCreate}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewGammeCreateLink}" />&nbsp;
+
+                                                        <h:commandLink action="#{gammeController.prepareList}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewGammeShowAllLink}"/>&nbsp;
+
+                                                        <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewGammeIndexLink}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>

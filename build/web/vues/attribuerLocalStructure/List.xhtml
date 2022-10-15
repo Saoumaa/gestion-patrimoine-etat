@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAttribuerLocalStructureTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAttribuerLocalStructureEmpty}" rendered="#{attribuerLocalStructureController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{attribuerLocalStructureController.items.rowCount > 0}">
+                    <h:outputText value="#{attribuerLocalStructureController.pagination.pageFirstItem + 1}..#{attribuerLocalStructureController.pagination.pageLastItem + 1}/#{attribuerLocalStructureController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{attribuerLocalStructureController.previous}" value="#{bundle.Previous} #{attribuerLocalStructureController.pagination.pageSize}" rendered="#{attribuerLocalStructureController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{attribuerLocalStructureController.next}" value="#{bundle.Next} #{attribuerLocalStructureController.pagination.pageSize}" rendered="#{attribuerLocalStructureController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{attribuerLocalStructureController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAttribuerLocalStructureTitle_attrLocalStructId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.attrLocalStructId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAttribuerLocalStructureTitle_dateAttribution}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateAttribution}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAttribuerLocalStructureTitle_dateFinAttribution}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateFinAttribution}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAttribuerLocalStructureTitle_localId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAttribuerLocalStructureTitle_structuresId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.structuresId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{attribuerLocalStructureController.prepareView}" value="#{bundle.ListAttribuerLocalStructureViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{attribuerLocalStructureController.prepareEdit}" value="#{bundle.ListAttribuerLocalStructureEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{attribuerLocalStructureController.destroy}" value="#{bundle.ListAttribuerLocalStructureDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{attribuerLocalStructureController.prepareCreate}" value="#{bundle.ListAttribuerLocalStructureCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAttribuerLocalStructureIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

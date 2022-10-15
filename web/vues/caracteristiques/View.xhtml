@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCaracteristiquesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCaracteristiquesLabel_caracteristiquesId}"/>
+                    <h:outputText value="#{caracteristiquesController.selected.caracteristiquesId}" title="#{bundle.ViewCaracteristiquesTitle_caracteristiquesId}"/>
+                    <h:outputText value="#{bundle.ViewCaracteristiquesLabel_designation}"/>
+                    <h:outputText value="#{caracteristiquesController.selected.designation}" title="#{bundle.ViewCaracteristiquesTitle_designation}"/>
+                    <h:outputText value="#{bundle.ViewCaracteristiquesLabel_familleId}"/>
+                    <h:outputText value="#{caracteristiquesController.selected.familleId}" title="#{bundle.ViewCaracteristiquesTitle_familleId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{caracteristiquesController.destroyAndView}" value="#{bundle.ViewCaracteristiquesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCaracteristiquesEditLink}"/>
+                <br />
+                <h:commandLink action="#{caracteristiquesController.prepareCreate}" value="#{bundle.ViewCaracteristiquesCreateLink}" />
+                <br />
+                <h:commandLink action="#{caracteristiquesController.prepareList}" value="#{bundle.ViewCaracteristiquesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCaracteristiquesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

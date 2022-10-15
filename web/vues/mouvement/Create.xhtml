@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMouvementTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMouvementLabel_mouvementId}" for="mouvementId" />
+                    <h:inputText id="mouvementId" value="#{mouvementController.selected.mouvementId}" title="#{bundle.CreateMouvementTitle_mouvementId}" required="true" requiredMessage="#{bundle.CreateMouvementRequiredMessage_mouvementId}"/>
+                    <h:outputLabel value="#{bundle.CreateMouvementLabel_designation}" for="designation" />
+                    <h:inputText id="designation" value="#{mouvementController.selected.designation}" title="#{bundle.CreateMouvementTitle_designation}" />
+                    <h:outputLabel value="#{bundle.CreateMouvementLabel_dateMouvement}" for="dateMouvement" />
+                    <h:inputText id="dateMouvement" value="#{mouvementController.selected.dateMouvement}" title="#{bundle.CreateMouvementTitle_dateMouvement}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateMouvementLabel_typeMouvementId}" for="typeMouvementId" />
+                    <h:selectOneMenu id="typeMouvementId" value="#{mouvementController.selected.typeMouvementId}" title="#{bundle.CreateMouvementTitle_typeMouvementId}" >
+                        <f:selectItems value="#{typeMouvementController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mouvementController.create}" value="#{bundle.CreateMouvementSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mouvementController.prepareList}" value="#{bundle.CreateMouvementShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMouvementIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCaracteristiquesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCaracteristiquesLabel_caracteristiquesId}" for="caracteristiquesId" />
+                    <h:inputText id="caracteristiquesId" value="#{caracteristiquesController.selected.caracteristiquesId}" title="#{bundle.CreateCaracteristiquesTitle_caracteristiquesId}" required="true" requiredMessage="#{bundle.CreateCaracteristiquesRequiredMessage_caracteristiquesId}"/>
+                    <h:outputLabel value="#{bundle.CreateCaracteristiquesLabel_designation}" for="designation" />
+                    <h:inputText id="designation" value="#{caracteristiquesController.selected.designation}" title="#{bundle.CreateCaracteristiquesTitle_designation}" />
+                    <h:outputLabel value="#{bundle.CreateCaracteristiquesLabel_familleId}" for="familleId" />
+                    <h:selectOneMenu id="familleId" value="#{caracteristiquesController.selected.familleId}" title="#{bundle.CreateCaracteristiquesTitle_familleId}" >
+                        <f:selectItems value="#{familleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{caracteristiquesController.create}" value="#{bundle.CreateCaracteristiquesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{caracteristiquesController.prepareList}" value="#{bundle.CreateCaracteristiquesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCaracteristiquesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

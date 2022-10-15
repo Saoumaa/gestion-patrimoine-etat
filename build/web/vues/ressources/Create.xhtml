@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRessourcesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="block-header">
+
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        <h:outputText value="#{bundle.CreateRessourcesTitle}"></h:outputText>
+
+                                    </h2>
+
+                                </div>
+                                <div class="body">
+
+                                    <h:form>
+                                        <!--
+                                          <h:outputLabel value="{bundle.CreateRessourcesLabel_ressourcesId}" for="ressourcesId" />
+                                          <h:inputText id="ressourcesId" value="{ressourcesController.selected.ressourcesId}" title="{bundle.CreateRessourcesTitle_ressourcesId}" required="true" requiredMessage="{bundle.CreateRessourcesRequiredMessage_ressourcesId}"/>-->
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <h:outputLabel value="#{bundle.CreateRessourcesLabel_designation}" for="designation" />
+                                                <h:inputText id="designation" value="#{ressourcesController.selected.designation}" class="form-control" title="#{bundle.CreateRessourcesTitle_designation}" />
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <h:outputLabel value="#{bundle.CreateRessourcesLabel_natureRessourcesId}" for="natureRessourcesId" />
+                                                        <h:selectOneMenu id="natureRessourcesId" value="#{ressourcesController.selected.natureRessourcesId}" title="#{bundle.CreateRessourcesTitle_natureRessourcesId}" >
+                                                            <f:selectItems value="#{natureRessourcesController.itemsAvailableSelectOne}"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group ">
+                                                    <div class="form-line">
+                                                        <h:outputLabel value="#{bundle.CreateRessourcesLabel_ressourcesMereId}" for="ressourcesMereId" />
+                                                        <h:selectOneMenu id="ressourcesMereId" value="#{ressourcesController.selected.ressourcesMereId}" title="#{bundle.CreateRessourcesTitle_ressourcesMereId}" >
+                                                            <f:selectItems value="#{ressourcesController.itemsAvailableSelectOne}"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group ">
+                                                    <div class="form-line">
+                                                        <h:outputLabel value="#{bundle.CreateRessourcesLabel_typeRessourcesId}" for="typeRessourcesId" />
+                                                        <h:selectOneMenu id="typeRessourcesId" value="#{ressourcesController.selected.typeRessourcesId}" title="#{bundle.CreateRessourcesTitle_typeRessourcesId}" >
+                                                            <f:selectItems value="#{typeRessourceController.itemsAvailableSelectOne}"/>
+                                                        </h:selectOneMenu>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <h:commandLink action="#{ressourcesController.create}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.CreateRessourcesSaveLink}" />&nbsp;
+
+                                                        <h:commandLink action="#{ressourcesController.prepareList}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.CreateRessourcesShowAllLink}" immediate="true"/>&nbsp;
+
+                                                        <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.CreateRessourcesIndexLink}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>

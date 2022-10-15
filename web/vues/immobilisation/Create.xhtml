@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateImmobilisationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateImmobilisationLabel_immobilisationId}" for="immobilisationId" />
+                    <h:inputText id="immobilisationId" value="#{immobilisationController.selected.immobilisationId}" title="#{bundle.CreateImmobilisationTitle_immobilisationId}" required="true" requiredMessage="#{bundle.CreateImmobilisationRequiredMessage_immobilisationId}"/>
+                    <h:outputLabel value="#{bundle.CreateImmobilisationLabel_designation}" for="designation" />
+                    <h:inputText id="designation" value="#{immobilisationController.selected.designation}" title="#{bundle.CreateImmobilisationTitle_designation}" />
+                    <h:outputLabel value="#{bundle.CreateImmobilisationLabel_forme}" for="forme" />
+                    <h:inputText id="forme" value="#{immobilisationController.selected.forme}" title="#{bundle.CreateImmobilisationTitle_forme}" />
+                    <h:outputLabel value="#{bundle.CreateImmobilisationLabel_superficie}" for="superficie" />
+                    <h:inputText id="superficie" value="#{immobilisationController.selected.superficie}" title="#{bundle.CreateImmobilisationTitle_superficie}" />
+                    <h:outputLabel value="#{bundle.CreateImmobilisationLabel_localisationId}" for="localisationId" />
+                    <h:selectOneMenu id="localisationId" value="#{immobilisationController.selected.localisationId}" title="#{bundle.CreateImmobilisationTitle_localisationId}" >
+                        <f:selectItems value="#{localisationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateImmobilisationLabel_typeImmobilierId}" for="typeImmobilierId" />
+                    <h:selectOneMenu id="typeImmobilierId" value="#{immobilisationController.selected.typeImmobilierId}" title="#{bundle.CreateImmobilisationTitle_typeImmobilierId}" >
+                        <f:selectItems value="#{typeImmobilierController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{immobilisationController.create}" value="#{bundle.CreateImmobilisationSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{immobilisationController.prepareList}" value="#{bundle.CreateImmobilisationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateImmobilisationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

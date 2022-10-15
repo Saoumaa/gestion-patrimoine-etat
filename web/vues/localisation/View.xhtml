@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLocalisationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLocalisationLabel_localisationId}"/>
+                    <h:outputText value="#{localisationController.selected.localisationId}" title="#{bundle.ViewLocalisationTitle_localisationId}"/>
+                    <h:outputText value="#{bundle.ViewLocalisationLabel_designation}"/>
+                    <h:outputText value="#{localisationController.selected.designation}" title="#{bundle.ViewLocalisationTitle_designation}"/>
+                    <h:outputText value="#{bundle.ViewLocalisationLabel_localisationMereId}"/>
+                    <h:outputText value="#{localisationController.selected.localisationMereId}" title="#{bundle.ViewLocalisationTitle_localisationMereId}"/>
+                    <h:outputText value="#{bundle.ViewLocalisationLabel_typeLocalisationId}"/>
+                    <h:outputText value="#{localisationController.selected.typeLocalisationId}" title="#{bundle.ViewLocalisationTitle_typeLocalisationId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{localisationController.destroyAndView}" value="#{bundle.ViewLocalisationDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLocalisationEditLink}"/>
+                <br />
+                <h:commandLink action="#{localisationController.prepareCreate}" value="#{bundle.ViewLocalisationCreateLink}" />
+                <br />
+                <h:commandLink action="#{localisationController.prepareList}" value="#{bundle.ViewLocalisationShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLocalisationIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

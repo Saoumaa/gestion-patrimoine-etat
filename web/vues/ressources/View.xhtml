@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRessourcesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRessourcesLabel_ressourcesId}"/>
+                    <h:outputText value="#{ressourcesController.selected.ressourcesId}" title="#{bundle.ViewRessourcesTitle_ressourcesId}"/>
+                    <h:outputText value="#{bundle.ViewRessourcesLabel_designation}"/>
+                    <h:outputText value="#{ressourcesController.selected.designation}" title="#{bundle.ViewRessourcesTitle_designation}"/>
+                    <h:outputText value="#{bundle.ViewRessourcesLabel_natureRessourcesId}"/>
+                    <h:outputText value="#{ressourcesController.selected.natureRessourcesId}" title="#{bundle.ViewRessourcesTitle_natureRessourcesId}"/>
+                    <h:outputText value="#{bundle.ViewRessourcesLabel_ressourcesMereId}"/>
+                    <h:outputText value="#{ressourcesController.selected.ressourcesMereId}" title="#{bundle.ViewRessourcesTitle_ressourcesMereId}"/>
+                    <h:outputText value="#{bundle.ViewRessourcesLabel_typeRessourcesId}"/>
+                    <h:outputText value="#{ressourcesController.selected.typeRessourcesId}" title="#{bundle.ViewRessourcesTitle_typeRessourcesId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{ressourcesController.destroyAndView}" value="#{bundle.ViewRessourcesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRessourcesEditLink}"/>
+                <br />
+                <h:commandLink action="#{ressourcesController.prepareCreate}" value="#{bundle.ViewRessourcesCreateLink}" />
+                <br />
+                <h:commandLink action="#{ressourcesController.prepareList}" value="#{bundle.ViewRessourcesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRessourcesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

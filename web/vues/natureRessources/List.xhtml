@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListNatureRessourcesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+                    
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+                                    <h:form styleClass="jsfcrud_list_form">
+                                        <div class="block-header">
+                                            <h2>
+                                                <h:outputText value="#{bundle.ListNatureRessourcesTitle}"></h:outputText>
+                                            </h2>
+                                        </div>
+                                        <h:panelGroup id="messagePanel" layout="block">
+                                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                        </h:panelGroup>
+                                        <h:outputText escape="false" value="#{bundle.ListNatureRessourcesEmpty}" rendered="#{natureRessourcesController.items.rowCount == 0}"/>
+                                        <h:panelGroup rendered="#{natureRessourcesController.items.rowCount > 0}">
+                                            <h:outputText value="#{natureRessourcesController.pagination.pageFirstItem + 1}..#{natureRessourcesController.pagination.pageLastItem + 1}/#{natureRessourcesController.pagination.itemsCount}"/>&nbsp;
+                                            <h:commandLink action="#{natureRessourcesController.previous}" value="#{bundle.Previous} #{natureRessourcesController.pagination.pageSize}" rendered="#{natureRessourcesController.pagination.hasPreviousPage}"/>&nbsp;
+                                            <h:commandLink action="#{natureRessourcesController.next}" value="#{bundle.Next} #{natureRessourcesController.pagination.pageSize}" rendered="#{natureRessourcesController.pagination.hasNextPage}"/>&nbsp;
+                                            <h:dataTable value="#{natureRessourcesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListNatureRessourcesTitle_natureRessourcesId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.natureRessourcesId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListNatureRessourcesTitle_designation}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.designation}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="&nbsp;"/>
+                                                    </f:facet>
+                                                    <h:commandLink class="btn btn-primary m-t-15 waves-effect" action="#{natureRessourcesController.prepareView}" value="#{bundle.ListNatureRessourcesViewLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink class="btn btn-warning m-t-15 waves-effect" action="#{natureRessourcesController.prepareEdit}" value="#{bundle.ListNatureRessourcesEditLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink class="btn btn-danger m-t-15 waves-effect" action="#{natureRessourcesController.destroy}" value="#{bundle.ListNatureRessourcesDestroyLink}"/>
+                                                </h:column>
+                                            </h:dataTable>
+                                        </h:panelGroup>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                         
+                                                        <h:commandLink class="btn btn-danger m-t-15 waves-effect" action="#{natureRessourcesController.prepareCreate}" value="#{bundle.ListNatureRessourcesCreateLink}"/>&nbsp;
+
+                                                        <h:link class="btn btn-danger m-t-15 waves-effect" outcome="/index" value="#{bundle.ListNatureRessourcesIndexLink}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>

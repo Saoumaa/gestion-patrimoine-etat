@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLocalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLocalLabel_localId}" for="localId" />
+                    <h:inputText id="localId" value="#{localController.selected.localId}" title="#{bundle.EditLocalTitle_localId}" required="true" requiredMessage="#{bundle.EditLocalRequiredMessage_localId}"/>
+                    <h:outputLabel value="#{bundle.EditLocalLabel_designation}" for="designation" />
+                    <h:inputText id="designation" value="#{localController.selected.designation}" title="#{bundle.EditLocalTitle_designation}" />
+                    <h:outputLabel value="#{bundle.EditLocalLabel_localMereId}" for="localMereId" />
+                    <h:selectOneMenu id="localMereId" value="#{localController.selected.localMereId}" title="#{bundle.EditLocalTitle_localMereId}" >
+                        <f:selectItems value="#{localController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLocalLabel_typeLocalId}" for="typeLocalId" />
+                    <h:selectOneMenu id="typeLocalId" value="#{localController.selected.typeLocalId}" title="#{bundle.EditLocalTitle_typeLocalId}" >
+                        <f:selectItems value="#{typeLocalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{localController.update}" value="#{bundle.EditLocalSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLocalViewLink}"/>
+                <br />
+                <h:commandLink action="#{localController.prepareList}" value="#{bundle.EditLocalShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLocalIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

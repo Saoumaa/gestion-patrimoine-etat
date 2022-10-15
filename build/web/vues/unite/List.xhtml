@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUniteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+                    
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+                                    <h:form styleClass="jsfcrud_list_form">
+                                        <div class="block-header">
+                                            <h2>
+                                                 <h:outputText value="#{bundle.ListUniteTitle}"></h:outputText>
+                                            </h2>
+                                        </div>
+                                        <h:panelGroup id="messagePanel" layout="block">
+                                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                        </h:panelGroup>
+                                        <h:outputText escape="false" value="#{bundle.ListUniteEmpty}" rendered="#{uniteController.items.rowCount == 0}"/>
+                                        <h:panelGroup rendered="#{uniteController.items.rowCount > 0}">
+                                            <h:outputText value="#{uniteController.pagination.pageFirstItem + 1}..#{uniteController.pagination.pageLastItem + 1}/#{uniteController.pagination.itemsCount}"/>&nbsp;
+                                            <h:commandLink action="#{uniteController.previous}" value="#{bundle.Previous} #{uniteController.pagination.pageSize}" rendered="#{uniteController.pagination.hasPreviousPage}"/>&nbsp;
+                                            <h:commandLink action="#{uniteController.next}" value="#{bundle.Next} #{uniteController.pagination.pageSize}" rendered="#{uniteController.pagination.hasNextPage}"/>&nbsp;
+                                            <h:dataTable value="#{uniteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListUniteTitle_uniteId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.uniteId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListUniteTitle_symbole}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.symbole}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListUniteTitle_designation}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.designation}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="&nbsp;"/>
+                                                    </f:facet>
+                                                    <h:commandLink class="btn btn-primary m-t-15 waves-effect" action="#{uniteController.prepareView}" value="#{bundle.ListUniteViewLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink class="btn btn-warning m-t-15 waves-effect" action="#{uniteController.prepareEdit}" value="#{bundle.ListUniteEditLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink class="btn btn-danger m-t-15 waves-effect" action="#{uniteController.destroy}" value="#{bundle.ListUniteDestroyLink}"/>
+                                                </h:column>
+                                            </h:dataTable>
+                                        </h:panelGroup>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <h:commandLink class="btn btn-danger m-t-15 waves-effect" action="#{uniteController.prepareCreate}" value="#{bundle.ListUniteCreateLink}"/>&nbsp;
+                                                        <h:link class="btn btn-danger m-t-15 waves-effect" outcome="/index" value="#{bundle.ListUniteIndexLink}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>

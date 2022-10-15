@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTypeStructureTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+                                    <h:form styleClass="jsfcrud_list_form">
+                                        <div class="block-header">
+                                            <h2>   <h:outputText value="#{bundle.ListTypeStructureTitle}"></h:outputText></h2>
+                                        </div>
+                                        <h:panelGroup id="messagePanel" layout="block">
+                                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                        </h:panelGroup>
+
+                                        <h:outputText escape="false" value="#{bundle.ListTypeStructureEmpty}" rendered="#{typeStructureController.items.rowCount == 0}"/>
+                                        <h:panelGroup rendered="#{typeStructureController.items.rowCount > 0}">
+                                            <h:outputText value="#{typeStructureController.pagination.pageFirstItem + 1}..#{typeStructureController.pagination.pageLastItem + 1}/#{typeStructureController.pagination.itemsCount}"/>&nbsp;
+                                            <h:commandLink action="#{typeStructureController.previous}" value="#{bundle.Previous} #{typeStructureController.pagination.pageSize}" rendered="#{typeStructureController.pagination.hasPreviousPage}"/>&nbsp;
+                                            <h:commandLink action="#{typeStructureController.next}" value="#{bundle.Next} #{typeStructureController.pagination.pageSize}" rendered="#{typeStructureController.pagination.hasNextPage}"/>&nbsp;
+                                            <h:dataTable class="table table-bordered" value="#{typeStructureController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                                <h:column rendered="false" >
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListTypeStructureTitle_typeStructureId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.typeStructureId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListTypeStructureTitle_designation}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.designation}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="&nbsp;"/>
+                                                    </f:facet>
+                                                    <h:commandLink action="#{typeStructureController.prepareView}" value="#{bundle.ListTypeStructureViewLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink action="#{typeStructureController.prepareEdit}" value="#{bundle.ListTypeStructureEditLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink action="#{typeStructureController.destroy}" value="#{bundle.ListTypeStructureDestroyLink}"/>
+                                                </h:column>
+                                            </h:dataTable>
+                                        </h:panelGroup>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <h:commandLink action="#{typeStructureController.prepareCreate}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListTypeStructureCreateLink}"/>&nbsp;
+
+                                                        <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListTypeStructureIndexLink}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                     </div>
+                 </section>
+
+                    </ui:define>
+                    </ui:composition>
+
+                    </html>

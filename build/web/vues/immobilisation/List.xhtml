@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListImmobilisationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListImmobilisationEmpty}" rendered="#{immobilisationController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{immobilisationController.items.rowCount > 0}">
+                    <h:outputText value="#{immobilisationController.pagination.pageFirstItem + 1}..#{immobilisationController.pagination.pageLastItem + 1}/#{immobilisationController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{immobilisationController.previous}" value="#{bundle.Previous} #{immobilisationController.pagination.pageSize}" rendered="#{immobilisationController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{immobilisationController.next}" value="#{bundle.Next} #{immobilisationController.pagination.pageSize}" rendered="#{immobilisationController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{immobilisationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListImmobilisationTitle_immobilisationId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.immobilisationId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListImmobilisationTitle_designation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.designation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListImmobilisationTitle_forme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.forme}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListImmobilisationTitle_superficie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.superficie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListImmobilisationTitle_localisationId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localisationId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListImmobilisationTitle_typeImmobilierId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeImmobilierId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{immobilisationController.prepareView}" value="#{bundle.ListImmobilisationViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{immobilisationController.prepareEdit}" value="#{bundle.ListImmobilisationEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{immobilisationController.destroy}" value="#{bundle.ListImmobilisationDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{immobilisationController.prepareCreate}" value="#{bundle.ListImmobilisationCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListImmobilisationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

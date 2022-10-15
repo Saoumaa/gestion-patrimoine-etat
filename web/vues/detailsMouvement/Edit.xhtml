@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetailsMouvementTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="block-header">
+                        <h2>DASHBOARD</h2>
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+                                    <h:form>
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+
+<!-- <h:outputLabel value="{bundle.EditDetailsMouvementLabel_detailsMouvementId}" for="detailsMouvementId" />
+<h:inputText id="detailsMouvementId" value="{detailsMouvementController.selected.detailsMouvementId}" title="{bundle.EditDetailsMouvementTitle_detailsMouvementId}" required="true" requiredMessage="#{bundle.EditDetailsMouvementRequiredMessage_detailsMouvementId}"/>
+                                                -->
+                                                <h:outputLabel class="form-label" value="#{bundle.EditDetailsMouvementLabel_quantiteMvt}" for="quantiteMvt" />
+                                                <h:inputText class="form-control" id="quantiteMvt" value="#{detailsMouvementController.selected.quantiteMvt}" title="#{bundle.EditDetailsMouvementTitle_quantiteMvt}" />
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">  
+                                                        <h:outputLabel  class="form-label" value="#{bundle.EditDetailsMouvementLabel_mouvementId}" for="mouvementId" />
+                                                        <h:selectOneMenu id="mouvementId" value="#{detailsMouvementController.selected.mouvementId}" title="#{bundle.EditDetailsMouvementTitle_mouvementId}" >
+                                                            <f:selectItems value="#{mouvementController.itemsAvailableSelectOne}"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group ">
+                                                    <div class="form-line"> 
+                                                        <h:outputLabel class="form-label" value="#{bundle.EditDetailsMouvementLabel_ressourcesId}" for="ressourcesId" />
+                                                        <h:selectOneMenu id="ressourcesId" value="#{detailsMouvementController.selected.ressourcesId}" title="#{bundle.EditDetailsMouvementTitle_ressourcesId}" >
+                                                            <f:selectItems value="#{ressourcesController.itemsAvailableSelectOne}"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <h:commandLink action="#{detailsMouvementController.update}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditDetailsMouvementSaveLink}"/>&nbsp;
+
+                                                        <h:link outcome="View" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditDetailsMouvementViewLink}"/>&nbsp;
+
+                                                        <h:commandLink action="#{detailsMouvementController.prepareList}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditDetailsMouvementShowAllLink}" immediate="true"/>&nbsp;
+
+                                                        <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditDetailsMouvementIndexLink}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>

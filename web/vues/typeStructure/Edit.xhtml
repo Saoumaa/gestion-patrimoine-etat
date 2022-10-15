@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTypeStructureTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="block-header">
+                        <h2>DASHBOARD</h2>
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+                                    <h:form>
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <!-- <h:outputLabel value="{bundle.EditTypeStructureLabel_typeStructureId}" for="typeStructureId" />
+                                                 <h:inputText id="typeStructureId" value="{typeStructureController.selected.typeStructureId}" title="{bundle.EditTypeStructureTitle_typeStructureId}" required="true" requiredMessage="{bundle.EditTypeStructureRequiredMessage_typeStructureId}"/>-->
+                                                <h:outputLabel class="form-label" value="#{bundle.EditTypeStructureLabel_designation}" for="designation" />
+                                                <h:inputText id="designation" value="#{typeStructureController.selected.designation}" title="#{bundle.EditTypeStructureTitle_designation}" />
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-8">
+                                                            <div class="form-group">
+                                                                <h:commandLink class="btn btn-danger m-t-15 waves-effect" action="#{typeStructureController.update}" value="#{bundle.EditTypeStructureSaveLink}"/>&nbsp;
+
+                                                                <h:link outcome="View" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditTypeStructureViewLink}"/>&nbsp;
+
+                                                                <h:commandLink action="#{typeStructureController.prepareList}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.EditTypeStructureShowAllLink}" immediate="true"/>&nbsp;
+
+                                                                <h:link outcome="/index" value="#{bundle.EditTypeStructureIndexLink}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </h:form>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        </section>
+                        </ui:define>
+                        </ui:composition>
+
+                        </html>

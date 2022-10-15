@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAttribuerLocalStructureTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAttribuerLocalStructureLabel_attrLocalStructId}"/>
+                    <h:outputText value="#{attribuerLocalStructureController.selected.attrLocalStructId}" title="#{bundle.ViewAttribuerLocalStructureTitle_attrLocalStructId}"/>
+                    <h:outputText value="#{bundle.ViewAttribuerLocalStructureLabel_dateAttribution}"/>
+                    <h:outputText value="#{attribuerLocalStructureController.selected.dateAttribution}" title="#{bundle.ViewAttribuerLocalStructureTitle_dateAttribution}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAttribuerLocalStructureLabel_dateFinAttribution}"/>
+                    <h:outputText value="#{attribuerLocalStructureController.selected.dateFinAttribution}" title="#{bundle.ViewAttribuerLocalStructureTitle_dateFinAttribution}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAttribuerLocalStructureLabel_localId}"/>
+                    <h:outputText value="#{attribuerLocalStructureController.selected.localId}" title="#{bundle.ViewAttribuerLocalStructureTitle_localId}"/>
+                    <h:outputText value="#{bundle.ViewAttribuerLocalStructureLabel_structuresId}"/>
+                    <h:outputText value="#{attribuerLocalStructureController.selected.structuresId}" title="#{bundle.ViewAttribuerLocalStructureTitle_structuresId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{attribuerLocalStructureController.destroyAndView}" value="#{bundle.ViewAttribuerLocalStructureDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAttribuerLocalStructureEditLink}"/>
+                <br />
+                <h:commandLink action="#{attribuerLocalStructureController.prepareCreate}" value="#{bundle.ViewAttribuerLocalStructureCreateLink}" />
+                <br />
+                <h:commandLink action="#{attribuerLocalStructureController.prepareList}" value="#{bundle.ViewAttribuerLocalStructureShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAttribuerLocalStructureIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

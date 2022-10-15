@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFamilleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="block-header">
+                        <h2>DASHBOARD</h2>
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+                                    <h:form>
+                                        <div class="form-group form-float">
+                                                
+                                            <!-- <h:outputText value="{bundle.ViewFamilleLabel_familleId}"/>
+                                            <h:outputText value="{familleController.selected.familleId}" title="{bundle.ViewFamilleTitle_familleId}"/>-->
+                                            <h:outputText  value="#{bundle.ViewFamilleLabel_designation}"/>
+                                            <h:outputText value="#{familleController.selected.designation}" title="#{bundle.ViewFamilleTitle_designation}"/>
+                                        
+                                            </div>
+                                        <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                        <h:commandLink action="#{familleController.destroyAndView}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewFamilleDestroyLink}"/>&nbsp;
+                                      
+                                        <h:link outcome="Edit" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewFamilleEditLink}"/>&nbsp;
+                                      
+                                        <h:commandLink action="#{familleController.prepareCreate}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewFamilleCreateLink}" />&nbsp;
+                                      
+                                        <h:commandLink action="#{familleController.prepareList}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewFamilleShowAllLink}"/>&nbsp;
+                                        <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ViewFamilleIndexLink}"/>
+                                         </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>

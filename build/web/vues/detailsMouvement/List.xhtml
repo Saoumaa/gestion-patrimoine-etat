@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDetailsMouvementTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <section class="content">
+                <div class="container-fluid">
+
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+
+                                <div class="body">
+                                    <h:form styleClass="jsfcrud_list_form">
+                                        <div class="block-header">
+                                            <h2>   <h:outputText value="#{bundle.ListDetailsMouvementTitle}"></h:outputText></h2>
+                                        </div>
+                                        <h:panelGroup id="messagePanel" layout="block">
+                                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                        </h:panelGroup>
+
+                                        <h:outputText escape="false" value="#{bundle.ListDetailsMouvementEmpty}" rendered="#{detailsMouvementController.items.rowCount == 0}"/>
+                                        <h:panelGroup rendered="#{detailsMouvementController.items.rowCount > 0}">
+                                            <h:outputText class="form-label" value="#{detailsMouvementController.pagination.pageFirstItem + 1}..#{detailsMouvementController.pagination.pageLastItem + 1}/#{detailsMouvementController.pagination.itemsCount}"/>&nbsp;
+                                            <h:commandLink action="#{detailsMouvementController.previous}" value="#{bundle.Previous} #{detailsMouvementController.pagination.pageSize}" rendered="#{detailsMouvementController.pagination.hasPreviousPage}"/>&nbsp;
+                                            <h:commandLink action="#{detailsMouvementController.next}" value="#{bundle.Next} #{detailsMouvementController.pagination.pageSize}" rendered="#{detailsMouvementController.pagination.hasNextPage}"/>&nbsp;
+                                            <h:dataTable class="table table-bordered" value="#{detailsMouvementController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                                <h:column rendered="false">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListDetailsMouvementTitle_detailsMouvementId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.detailsMouvementId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListDetailsMouvementTitle_quantiteMvt}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.quantiteMvt}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListDetailsMouvementTitle_mouvementId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.mouvementId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{bundle.ListDetailsMouvementTitle_ressourcesId}"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.ressourcesId}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="&nbsp;"/>
+                                                    </f:facet>
+                                                    <h:commandLink action="#{detailsMouvementController.prepareView}" class="btn btn-primary m-t-15 waves-effect" value="#{bundle.ListDetailsMouvementViewLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink action="#{detailsMouvementController.prepareEdit}"  class="btn btn-warning m-t-15 waves-effect" value="#{bundle.ListDetailsMouvementEditLink}"/>
+                                                    <h:outputText value=" "/>
+                                                    <h:commandLink action="#{detailsMouvementController.destroy}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListDetailsMouvementDestroyLink}"/>
+                                                </h:column>
+                                            </h:dataTable>
+                                        </h:panelGroup>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+
+                                                        <h:commandLink action="#{detailsMouvementController.prepareCreate}" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListDetailsMouvementCreateLink}"/>&nbsp;
+
+                                                        <h:link outcome="/index" class="btn btn-danger m-t-15 waves-effect" value="#{bundle.ListDetailsMouvementIndexLink}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+
+</html>
